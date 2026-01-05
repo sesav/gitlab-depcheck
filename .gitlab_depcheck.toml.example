@@ -1,0 +1,17 @@
+# GitLab Dependency Checker Configuration
+# Copy this file to .gitlab_depcheck.toml (project) or ~/.gitlab_depcheck.toml (home)
+
+[gitlab]
+# GitLab instance URL (default: https://gitlab.com)
+url = "https://gitlab.com"
+
+# Personal access token with read_api scope
+# IMPORTANT: Do not commit tokens to git! Use environment variable or home config instead
+# token = "your-personal-access-token"
+
+[search]
+# Default group to search in (optional)
+# group = "mycompany/backend"
+
+# Maximum concurrent API requests (default: 10)
+max_concurrent = 20

@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gitlab-depcheck"
+version = "0.5.0"
+description = "Check python package dependencies across GitLab projects"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Sergey Silaev", email = "hello@8am.dev" }
+]
+keywords = [
+    "gitlab",
+    "dependencies",
+    "python",
+    "package",
+    "checker",
+    "python310",
+    "python311",
+    "python312",
+    "python313",
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "click>=8.3.1",
+    "httpx>=0.28.1",
+    "rich>=14.2.0",
+    "tomli>=2.3.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/sesav/gitlab-dep-checker"
+Repository = "https://github.com/sesav/gitlab-dep-checker"
+Issues = "https://github.com/sesav/gitlab-dep-checker/issues"
+
+[project.scripts]
+gitlab-depcheck = "gitlab_depcheck.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=gitlab_depcheck",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+    "-p", "no:warnings",
+]
+
+# vim: ts=4 sts=4 sw=4 et

@@ -1,0 +1,140 @@
+target-version = "py312"
+line-length = 120
+fix = true
+
+[lint]
+select = [
+    "ANN001",  # missing type annotation for arguments
+    "ARG",     # flake8-unused-arguments
+    "B",       # flake8-bugbear
+    "C4",      # flake8-comprehensions
+    "C90",     # mccabe
+    "COM",     # flake8-commas
+    "E",       # pycodestyle errors
+    "ERA",     # flake8-eradicate
+    "F",       # pyflakes
+    "FBT003",  # flake8-boolean-trap
+    "FLY",     # flynt
+    "G",       # flake8-logging-format
+    "G010",    # Logging statement uses warn instead of warning
+    "G201",    # Logging .exception(...) should be used instead of .error(..., exc_info=True)
+    "G202",    # Logging statement has redundant exc_info
+    "I",       # isort
+    "INP",     # flake8-no-pep420
+    "ISC",     # flake8-implicit-str-concat
+    "LOG",     # flake8-logging
+    "N",       # pep8-naming
+    "PGH",     # pygrep-hooks
+    "PIE",     # flake8-pie
+    "PLC0414", # Import alias does not rename original package
+    "PLE",     # Error
+    "PLW",     # Warning
+    "PT",      # flake8-pytest-style
+    "PTH",     # flake8-use-pathlib
+    "PYI",     # flake8-pyi
+    "Q",       # flake8-quotes
+    "RET",     # flake8-return
+    "RSE",     # flake8-raise
+    "RUF",     # ruff-specific rules
+    "SIM",     # flake8-simplify
+    "T10",     # flake8-debugger
+    "T20",     # flake8-print
+    "TCH",     # flake8-type-checking
+    "TRY",     # tryceratops
+    "UP",      # pyupgrade
+    "W",       # pycodestyle warnings
+    "YTT",     # flake8-2020
+]
+unfixable = [
+    "ERA001", # eradicate: found commented out code (can be dangerous if fixed automatically)
+]
+
+ignore = [
+    "A003",    # | class attribute `id` is shadowing a Python builtin — it's ok in class body
+    "ANN001",  # | missing type annotations for function arguments - OK for CLI with click decorators
+    "ANN401",  # |
+    "ARG002",  # |
+    "ARG003",  # |
+    "B007",    # | unused loop variable - OK in some cases
+    "B008",    # | checks for function calls in default function arguments.
+    "B904",    # |
+    "C901",    # | function complexity - OK for CLI parsing logic
+    "COM812",  # | trailing comas are handled by ruff format
+    "DTZ003",  # | allow datetime.utcnow()
+    "E712",    # | allow == True comparisons for sqlalchemy queries
+    "EM101",   # | Forbids using literal strings in exceptions. I think it's ok
+    "EM102",   # |
+    "ERA001",  # |
+    "FIX001",  # | forbids using TODOs
+    "FIX002",  # |
+    "G004",    # | logging statement uses f-string — it's ok, f-strings are fast enough
+    "ISC001",  # | recommended to be disabled when using ruff format
+    "N805",    # | invalid-first-argument-name-for-method
+    "PLE0604", # | invalid-all-object (in `__all__`)
+    "PLW2901", # | loop variable overwritten - OK in parsing logic
+    "PTH123",  # | Path.open vs open - OK for compatibility
+    "RET504",  # | unnecessary assignment before return - OK for readability
+    "RUF001",  # | allow cyrillic letters in comments
+    "RUF012",  # | mutable class attributes - OK for constants
+    "RUF059",  # | unused unpacked variable - OK when unpacking tuples
+    "SIM102",  # | nested if - OK for readability
+    "SIM108",  # | ternary operator - OK for readability
+    "T201",    # | print statement - OK for CLI output
+    "TD001",   # |
+    "TD002",   # |
+    "TD003",   # |
+    "TRY002",  # |
+    "TRY003",  # | forbids long messages in exceptions, again, it's ok
+    "TRY300",  # | consider else block - OK in some cases
+    "TRY401",  #
+
+    # The following rules are recommended to be ignored by ruff when using ruff format
+    "COM812", # Checks for the absence of trailing commas
+    "COM819", # Checks for the presence of prohibited trailing commas
+    "D206",   # Checks for docstrings that are indented with tabs
+    "D300",   # Checks for docstrings that use '''single quotes''' instead of """double quotes"""
+    "DTZ003", # | allow datetime.utcnow()
+    "E111",   # Checks for indentation with a non-multiple of 4 spaces
+    "E114",   # Checks for indentation of comments with a non-multiple of 4 spaces
+    "E117",   # Checks for over-indented code
+    "E712",   # | allow == True comparisons for sqlalchemy queries
+    "ISC001", # Checks for implicitly concatenated strings on a single line
+    "ISC002", # Checks for implicitly concatenated strings that span multiple lines
+    "Q000",   # Checks for inline strings that use single quotes or double quotes
+    "Q001",   # Checks for multiline strings that use single quotes or double quotes
+    "Q002",   # Checks for docstrings that use single quotes or double quotes
+    "Q003",   # Checks for strings that include escaped quotes
+    "RET506", # Unnecessary `elif` after `raise` statement
+    "W191",   # Checks for indentation that uses tabs
+]
+
+extend-ignore = [
+    "D", # docstrings
+]
+
+exclude = ["tests/*", "conftest.py", "build", "dist", "migrations"]
+
+[lint.mccabe]
+max-complexity = 10
+
+[lint.flake8-bugbear]
+# Allow default arguments like, e.g., `data: list[str] = fastapi.Query(None)`.
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]
+
+[lint.flake8-self]
+ignore-names = ["_mapping"]
+
+[lint.pylint]
+max-args = 12
+max-returns = 12
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[lint.isort]
+known-first-party = ["gitlab_depcheck"]
+combine-as-imports = true
+lines-after-imports = 2
