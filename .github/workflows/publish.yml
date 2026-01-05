@@ -47,5 +47,5 @@ jobs:
           name: release-dists
           path: dist/
 
-      - name: Publish PyPI
-        run: uv publish
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
