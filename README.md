@@ -14,10 +14,12 @@ If you find it useful too, feel free to use it.
 
 ## Getting Started
 
-The easiest way to install is with `uv`:
+The easiest way to install is with `uv` via PyPi:
 
 ```bash
 uv tool install gitlab-depcheck
+# or direct via GitHub
+uv tool install https://github.com/sesav/gitlab-depcheck.git
 ```
 
 This puts the `gitlab-depcheck` command in your path (usually `~/.local/bin/`). If you don't have

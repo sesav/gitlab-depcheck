@@ -72,8 +72,9 @@ ci: check pre-commit
 # Create a new release (update version and build)
 release VERSION:
     @echo "Updating version to {{VERSION}}"
-    sed -i '' 's/version = "[0-9.]*"/version = "{{VERSION}}"/' pyproject.toml
-    sed -i '' 's/__version__ = "[0-9.]*"/__version__ = "{{VERSION}}"/' gitlab_depcheck/__init__.py
-    sed -i '' "s/version='[0-9.]*'/version='{{VERSION}}'/" gitlab_depcheck/cli.py
+    sed -i 's/version = "[0-9.]*"/version = "{{VERSION}}"/' pyproject.toml
+    sed -i 's/__version__ = "[0-9.]*"/__version__ = "{{VERSION}}"/' gitlab_depcheck/__init__.py
+    sed -i "s/version='[0-9.]*'/version='{{VERSION}}'/" gitlab_depcheck/cli.py
     just build
     @echo "Release {{VERSION}} built successfully"
+    just update
