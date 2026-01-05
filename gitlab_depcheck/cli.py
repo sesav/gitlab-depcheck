@@ -14,6 +14,8 @@ from rich.markup import escape
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 
+from gitlab_depcheck import __version__
+
 
 try:
     import tomllib  # Python 3.11+
@@ -581,7 +583,7 @@ def load_config() -> dict:
 
 
 @click.command()
-@click.version_option(version="0.5.0", prog_name="gitlab-depcheck")
+@click.version_option(version=__version__, prog_name="gitlab-depcheck")
 @click.argument("package", type=str)
 @click.option(
     "--url",

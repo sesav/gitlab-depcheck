@@ -2,6 +2,7 @@ import pytest
 from click.testing import CliRunner
 from unittest.mock import patch, AsyncMock, MagicMock
 from pathlib import Path
+from gitlab_depcheck import __version__
 from gitlab_depcheck.cli import main, load_config, DependencyMatch
 
 
@@ -192,7 +193,7 @@ class TestCLI:
         runner = CliRunner()
         result = runner.invoke(main, ["--version"])
         assert result.exit_code == 0
-        assert "0.5.0" in result.output
+        assert __version__ in result.output
 
     def test_cli_help_option(self):
         """
