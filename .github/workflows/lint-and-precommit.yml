@@ -10,30 +10,27 @@ on:
 
 jobs:
   lint-and-pre-commit:
-    runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
 
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      steps:
+        - uses: actions/checkout@v5
+        - name: Install uv and set the python version
+          uses: astral-sh/setup-uv@v7
+          with:
+            python-version: "3.12"
+            version: "0.9.21"
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
+        - name: Python version
+          run: python -V
 
-      - name: Install uv
-        run: |
-          pip install -U pip setuptools wheel
-          pip install uv
+        - name: Uv version
+          run: uv --version
 
-      - name: Install just
-        uses: extractions/setup-just@v2
+        - name: Install just
+          uses: extractions/setup-just@v3
 
-      - name: Install dependencies
-        run: just install
+        - name: Install dependencies
+          run: just install
 
-      - name: CI
-        run: just ci
+        - name: CI
+          run: just ci
