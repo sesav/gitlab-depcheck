@@ -1,6 +1,5 @@
 # GitLab Dependency Checker
 
-![Total](https://img.shields.io/github/downloads/sesav/gitlab-depcheck/total)
 ![Python Version](https://img.shields.io/badge/python-3.10+-blue)
 ![](https://img.shields.io/github/repo-size/sesav/gitlab-depcheck)
 ![](https://img.shields.io/github/last-commit/sesav/gitlab-depcheck)
