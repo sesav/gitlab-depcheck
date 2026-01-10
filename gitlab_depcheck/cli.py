@@ -609,7 +609,6 @@ def load_config() -> dict:
 @click.option(
     "--max-concurrent",
     type=int,
-    default=10,
     help="Maximum concurrent API requests",
 )
 @click.option(
@@ -628,7 +627,7 @@ def main(package, url, token, group, search, archived, max_concurrent, output):
       gitlab-depcheck pandas
 
       # Search in specific group
-      gitlab-depcheck requests --group mycompany/backend
+      gitlab-depcheck httpx --group mycompany/backend
 
       # Search with project name filter
       gitlab-depcheck fastapi --search api
