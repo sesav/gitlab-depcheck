@@ -47,9 +47,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/sesav/gitlab-dep-checker"
-Repository = "https://github.com/sesav/gitlab-dep-checker"
-Issues = "https://github.com/sesav/gitlab-dep-checker/issues"
+Homepage = "https://github.com/sesav/gitlab-depcheck"
+Repository = "https://github.com/sesav/gitlab-depcheck"
+Issues = "https://github.com/sesav/gitlab-gitlab-depcheck/issues"
 
 [project.scripts]
 gitlab-depcheck = "gitlab_depcheck.cli:main"
